@@ -1,24 +1,16 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import PlacesView from "./PlacesView"
 import AddPlace from "./AddPlace"
 
 export default class FrontPage extends Component {
 
-  getPlaces(){
-    fetch("https://apifortests.herokuapp.com/api/places")
-      .then(response => response.json())
-      .then(json => this.handleResponse(json))
-      .catch(error => console.log("handle error"));
-  }
-
-  handleResponse(places){
+  handlePressedPlaces(){
     this.props.navigator.push({
       component: PlacesView,
-      title: "Places",
-      passProps: { places: places }
+      title: "Places"
     })
   }
 
@@ -41,7 +33,7 @@ export default class FrontPage extends Component {
           </Text>
         </View>
         <View style={styles.actions}>
-          <TouchableHighlight onPress={this.getPlaces.bind(this)} style={styles.button} underlayColor='#99d9f4'>
+          <TouchableHighlight onPress={this.handlePressedPlaces.bind(this)} style={styles.button} underlayColor='#99d9f4'>
             <Text style={styles.buttonText}>
               Places
             </Text>

@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableHighlight } from 'react-native';
-import PlaceView from "./PlaceView"
+import FrontPage from "./FrontPage"
 
 export default class AddPlace extends Component {
   constructor(props) {
@@ -29,14 +29,13 @@ export default class AddPlace extends Component {
       },
       body: JSON.stringify(this.getFormData())
     }).then(() => this.getFormData())
-    .then((place) => this.moveToPlace(place))
+    .then((place) => this.moveToPlace())
   }
 
-  moveToPlace(place){
+  moveToPlace(){
     this.props.navigator.push({
-      component: PlaceView,
-      title: "Place",
-      passProps: { place: place }
+      component: FrontPage,
+      title: "FavPlaces"
     })
   }
 

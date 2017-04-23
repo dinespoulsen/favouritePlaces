@@ -8,29 +8,25 @@ export default class PlaceView extends Component {
   constructor(props) {
     super(props);
     this.state = {region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitude: this.props.place.lat,
+        longitude: this.props.place.lng,
+        latitudeDelta: 0.0043,
+        longitudeDelta: 0.0034,
       }
     };
   }
 
-
-
   render() {
+    let marker = <MapView.Marker coordinate={{latitude: this.props.place.lat, longitude: this.props.place.lng}} title={this.props.place.name} description="to come..."/>;
     return (
       <View style={styles.container}>
         <View style={{ position: 'relative', height: 400}}>
           <MapView
             style={{ left:0, right: 0, top:0, bottom: 0, position: 'absolute' }}
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-          />
+            initialRegion={this.state.region}
+          >
+            {marker}
+          </MapView>
         </View>
         <View style={styles.info}>
           <View>

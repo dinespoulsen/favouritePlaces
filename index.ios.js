@@ -21,5 +21,4 @@ export default class favPlaces extends Component {
   }
 }
 
-
 AppRegistry.registerComponent('favouritePlaces', () => favPlaces);

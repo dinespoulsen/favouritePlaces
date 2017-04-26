@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableHighlight } from 'react-native';
-import FrontPage from "./FrontPage"
+import PlaceView from "./PlaceView"
 
 export default class AddPlace extends Component {
   constructor(props) {
@@ -28,14 +28,15 @@ export default class AddPlace extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.getFormData())
-    }).then(() => this.getFormData())
-    .then((place) => this.moveToPlace())
+    }).then((res) => res.json())
+    .then((json) => this.moveToPlace(json.place))
   }
 
-  moveToPlace(){
+  moveToPlace(place){
     this.props.navigator.push({
-      component: FrontPage,
-      title: "FavPlaces"
+      component: PlaceView,
+      title: "Place",
+      passProps: { place: place }
     })
   }
 
@@ -114,5 +115,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
-
-module.exports = AddPlace

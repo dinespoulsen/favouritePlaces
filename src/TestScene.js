@@ -1,16 +1,15 @@
 "use strict";
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import TestScene from "./TestScene";
+import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Navigator, TouchableOpacity} from 'react-native';
 
-export default class FrontPage extends Component {
+export default class TestScene extends Component {
 
   gotoNext(){
     this.props.navigator.push({
       id: 'tapbar'
     });
   }
-
+  
   render() {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>

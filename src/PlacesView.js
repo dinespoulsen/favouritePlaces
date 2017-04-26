@@ -99,5 +99,3 @@ var styles = StyleSheet.create({
     paddingTop: 66
   }
 });
-
-module.exports = PlacesView

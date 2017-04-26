@@ -78,5 +78,3 @@ const styles = StyleSheet.create({
     color: '#656565'
   }
 });
-
-module.exports = PlaceView
